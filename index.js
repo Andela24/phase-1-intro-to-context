@@ -56,7 +56,9 @@ function wagesEarnedOnDate(employee, dateStamp) {
     return employee.payPerHour * 2
     
 }
-//
+//wants you to return the total wages for all the dates worked
+//getting all the dates first and then returning total number
+//Using `wagesEarnedOnDate`, sum the value of all dates worked by the employee in the record
 function allWagesFor(employee){
-let availableDates = employee
+console.log(employee)
 }
