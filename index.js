@@ -53,12 +53,28 @@ function hoursWorkedOnDate(employee, dateStamp) {
 //calculating earned wages on given date(27$ per hour) using hours worked
 function wagesEarnedOnDate(employee, dateStamp) {
     let earnedMoney = hoursWorkedOnDate(employee, dateStamp)
-    return employee.payPerHour * 2
-    
+        * employee.payPerHour
+    return parseFloat(earnedMoney,toString())
 }
-//wants you to return the total wages for all the dates worked
+//return the total wages for all the dates worked
 //getting all the dates first and then returning total number
 //Using `wagesEarnedOnDate`, sum the value of all dates worked by the employee in the record
 function allWagesFor(employee){
-console.log(employee)
+let availableDates = employee.timeInEvents.map(function(e){
+    // console.log(e)
+    return e.date
+})
+ let sum = availableDates.reduce((previousValue, currentValue) => { //currentValue represents all dates
+    return previousValue + wagesEarnedOnDate(employee, currentValue)  //adding earned wages to previousValue(availableDates)
+}, 0); //setting up previousValue to 0
+
+    return sum
+}
+//calculate payroll for all employees for all dates
+function calculatePayroll(employee){
+    return employee.reduce((previousValue, currentValue) => {
+    // console.log(previousValue)
+    // console.log(currentValue)
+   return previousValue + allWagesFor(currentValue)
+}, 0)
 }
